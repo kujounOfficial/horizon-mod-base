@@ -1,0 +1,36 @@
+[mod]
+id = "horizonmod"
+version = "1.0.0"
+priority = 100
+
+[compatibility]
+horizon_revision = "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "horizonmod"
+source = "runtime.rs"
+
+[[module]]
+id = "glue"
+file = "crates/horizon-client/src/game.rs"
+name = "horizonmod_glue"
+source = "glue.rs"
+
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_client_tick_post"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "interact"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::remote_use_item_on"
+helper = "interact.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]
