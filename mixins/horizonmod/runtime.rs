@@ -2,13 +2,13 @@
 use std::sync::atomic::{AtomicBool, Ordering};
 
 pub const ID: &str = "horizonmod";
-pub const NAME: &str = "Crosshair Indicator";
+pub const NAME: &str = "horizonmod";
 pub const VERSION: &str = "1.0.0";
 pub const DESCRIPTION: &str =
-    "Dynamic attack reach awareness: visual feedback on your crosshair when hovering over an entity in range.";
+    "test mod";
 
 pub const KEY_TOGGLE: &str = "toggle";
-pub const KEY_TOGGLE_LABEL: &str = "Toggle Crosshair Indicator";
+pub const KEY_TOGGLE_LABEL: &str = "Toggle horizonmod";
 pub const KEY_TOGGLE_DEFAULT: &str = "key.keyboard.unknown";
 
 // Color constants (0xAARRGGBB)
@@ -125,7 +125,7 @@ impl Settings {
     pub fn labels(&self) -> Vec<String> {
         vec![
             format!(
-                "Crosshair Indicator: {}",
+                "test: {}",
                 if self.enabled { "ON" } else { "OFF" }
             ),
             format!("Style: {}", self.style.name()),
